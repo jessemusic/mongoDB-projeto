@@ -146,7 +146,7 @@ A API poder� ser acessada em [localhost:8080](http://localhost:8080)
 
 O Swagger poder� ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-Lista de estacionamento
+Lista de artigos
 
 - GET /artigos
 
@@ -234,7 +234,7 @@ http GET http://localhost:8080/artigos
 ]
 ```
 
-CADASTRO DE ESTACIONAMENTO
+CADASTRO DE ARTIGOS
 * POST /artigos
 
 ```
