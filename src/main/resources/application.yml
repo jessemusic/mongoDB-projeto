@@ -1,0 +1,9 @@
+spring:
+  application:
+     name: springblog
+  data:
+    mongodb:
+      uri: mongodb://localhost/blog
+      port: 27017
+      username:
+
