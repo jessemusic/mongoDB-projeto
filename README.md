@@ -163,7 +163,91 @@ http GET http://localhost:8080/artigos
             "imagem": null
         }
     },
-    ...
+    {
+        "codigo": "66e1f54efa43c3113c95d6d4",
+        "titulo": "Jesse Show",
+        "data": "2024-09-09T18:30:00",
+        "texto": "Este é um evento imperdível para todos os fãs do Jesse. Não perca a oportunidade de ver este show incrível!",
+        "url": "https://www.jesseshow.com",
+        "status": 1,
+        "autor": null
+    },
+    {
+        "codigo": "66e1f66b762d203662c30101",
+        "titulo": "Jesse Parceiro",
+        "data": "2024-09-09T18:30:00",
+        "texto": "Este é um evento imperdível para todos os fãs do Jesse. Não perca a oportunidade de ver este show incrível!",
+        "url": "https://www.jesseparceiro.com",
+        "status": 1,
+        "autor": null
+    },
+    {
+        "codigo": "66e21a6a84b8a0583cf50aa3",
+        "titulo": "Jesse Parceiro",
+        "data": "2024-09-09T18:30:00",
+        "texto": "Este é um evento imperdível para todos os fãs do Jesse. Não perca a oportunidade de ver este show incrível!",
+        "url": "https://www.jesseparceiro.com",
+        "status": 1,
+        "autor": null
+    },
+    {
+        "codigo": "66e21a7a84b8a0583cf50aa4",
+        "titulo": "Jesse Parceiro",
+        "data": "2024-09-09T18:30:00",
+        "texto": "Este é um evento imperdível para todos os fãs do Jesse. Não perca a oportunidade de ver este show incrível!",
+        "url": "https://www.jesseparceiro.com",
+        "status": 1,
+        "autor": {
+            "codigo": "66e219cf84b8a0583cf50aa2",
+            "nome": "Acassio Bernardo",
+            "biografia": "Médico cientista",
+            "imagem": "jpg"
+        }
+    },
+    {
+        "codigo": "66e33403de9e8e07072fa6da",
+        "titulo": "Jerm Haroald",
+        "data": "2024-09-12T18:02:20.756",
+        "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+        "url": "https://www.harosald.com",
+        "status": 1,
+        "autor": null
+    },
+    {
+        "codigo": "66e33514de9e8e07072fa6db",
+        "titulo": "Jerm Haroald",
+        "data": "2024-09-12T18:02:20.756",
+        "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+        "url": "https://www.harosald.com",
+        "status": 1,
+        "autor": {
+            "codigo": "66e219cf84b8a0583cf50aa2",
+            "nome": "Acassio Bernardo",
+            "biografia": "Médico cientista",
+            "imagem": "jpg"
+        }
+    }
+]
+
+
+BUSCA DE ARTIGOS POR ID
+
+http://localhost:8080/artigos/66e33403de9e8e07072fa6da
+HTTP/1.1 200 OK
+Content-Length: 129
+Content-Type: application/json
+ RESULTS
+ {
+    "codigo": "66e33403de9e8e07072fa6da",
+    "titulo": "Jerm Haroald",
+    "data": "2024-09-12T18:02:20.756",
+    "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+    "url": "https://www.harosald.com",
+    "status": 1,
+    "autor": null
+}
+ 
+
 ]
 Cadastro de Artigos
 POST /artigos
@@ -183,4 +267,44 @@ Content-Type: application/json
     "autor": {
         "codigo": "66e219cf84b8a0583cf50aa2"
     }
+}
+
+results 
+{
+    "codigo": "66e34816ef798628861245d4",
+    "titulo": "Jerm Haroald",
+    "data": "2024-09-12T18:02:20.756803",
+    "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+    "url": "https://www.harosald.com",
+    "status": 1,
+    "autor": {
+        "codigo": "66e219cf84b8a0583cf50aa2",
+        "nome": "Acassio Bernardo",
+        "biografia": "Médico cientista",
+        "imagem": "jpg"
+    }
+}
+
+OU CADASTRO COM O AUTOR NULL
+
+{
+    "titulo": "Jerm Haroald",
+    "data": "2024-09-12T18:02:20.756803",
+    "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+    "url": "https://www.harosald.com",
+    "status": 1,
+    "autor": {
+            "codigo": null
+        }
+}
+result
+
+{
+    "codigo": "66e347b4ef798628861245d3",
+    "titulo": "Jerm Haroald",
+    "data": "2024-09-12T18:02:20.756803",
+    "texto": "Este é um evento imperdível para todos os fãs do haroald. Não perca a op…",
+    "url": "https://www.harosald.com",
+    "status": 1,
+    "autor": null
 }
