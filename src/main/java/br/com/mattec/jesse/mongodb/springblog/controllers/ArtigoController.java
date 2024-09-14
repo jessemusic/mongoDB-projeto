@@ -1,5 +1,6 @@
 package br.com.mattec.jesse.mongodb.springblog.controllers;
 
+import br.com.mattec.jesse.mongodb.springblog.dto.ArtigoDTO;
 import br.com.mattec.jesse.mongodb.springblog.model.Artigo;
 import br.com.mattec.jesse.mongodb.springblog.service.ArtigoService;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,18 @@ public class ArtigoController {
     public List<Artigo> findByDataGreaterThan(@RequestParam("data") LocalDateTime data){
         return this.artigoService.findByGreaterThan(data);
     }
+
+    @GetMapping("/data_status")
+    public List<Artigo> findByDataAndStatus(
+            @RequestParam("data") LocalDateTime data,
+            @RequestParam("status") Integer status){
+        return this.artigoService.findByDataAndStatus(data,status);
+    }
+
+    @PatchMapping
+    public void atualiza(@RequestBody ArtigoDTO artigo){
+        this.artigoService.aualizar(artigo);
+    }
+
 
 }

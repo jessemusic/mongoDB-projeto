@@ -1,5 +1,7 @@
 package br.com.mattec.jesse.mongodb.springblog.service.impl;
 
+import br.com.mattec.jesse.mongodb.springblog.dto.ArtigoDTO;
+import br.com.mattec.jesse.mongodb.springblog.exceptions.ArtigoNotFoundException;
 import br.com.mattec.jesse.mongodb.springblog.model.Artigo;
 import br.com.mattec.jesse.mongodb.springblog.model.Autor;
 import br.com.mattec.jesse.mongodb.springblog.repositories.ArtigoRepository;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArtigoServiceImpl implements ArtigoService {
@@ -54,6 +57,40 @@ public class ArtigoServiceImpl implements ArtigoService {
     public List<Artigo> findByGreaterThan(LocalDateTime data) {
         Query query = new Query(Criteria.where("data").gt(data));
         return mongoTemplate.find(query, Artigo.class);
+    }
+
+    @Override
+    public List<Artigo> findByDataAndStatus(LocalDateTime data, Integer status) {
+        Query query = new Query(Criteria.where("data").is(data)
+                .and("status").is(status));
+        return mongoTemplate.find(query, Artigo.class);
+    }
+
+    @Override
+    public void aualizar(ArtigoDTO artigoReq) {
+        Optional<Artigo> idArtigo = this.artigoRepository.findById(artigoReq.getCodigo());
+        Artigo artigo = idArtigo.orElseThrow(() -> new ArtigoNotFoundException("Artigo não encontrado no banco de dados"));;
+
+            if (artigoReq.getTitulo() != null) {
+                artigo.setTitulo(artigoReq.getTitulo());
+            }
+            if (artigoReq.getData() != null) {
+                artigo.setData(artigoReq.getData());
+            }
+            if (artigoReq.getTexto() != null) {
+                artigo.setTexto(artigoReq.getTexto());
+            }
+            if (artigoReq.getUrl() != null) {
+                artigo.setUrl(artigoReq.getUrl());
+            }
+            if (artigoReq.getStatus() != null) {
+                artigo.setStatus(artigoReq.getStatus());
+            }
+            if (artigoReq.getAutor() != null) {
+                artigo.setAutor(artigoReq.getAutor());
+            }
+
+        this.artigoRepository.save(artigo);
     }
 
 }
